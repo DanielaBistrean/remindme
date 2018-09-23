@@ -1,5 +1,8 @@
 #include "reminder.h"
 
+#include "notification_service.h"
+#include "notification.h"
+
 #include <stdexcept>
 #include <iostream>
 
@@ -10,8 +13,13 @@ namespace remindme
 	{
 		try
 		{
+			auto ns = notification_service::getInstance("RemindMe");
+			
 			const reminder *r = static_cast<const reminder*> (value.sival_ptr);
 			std::cout << r->getTitle() << ": time is up!\n";
+			
+			notification n = ns.createNotification("RemindMe", r->getTitle());
+			n.show(3000);
 		}
 		catch (const std::exception &e)
 		{
