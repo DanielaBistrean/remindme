@@ -32,6 +32,7 @@ set (SOURCES
 	notification_service.cc
 	reminder.cc
 	timer.cc
+    reminder_manager.cc
 )
 
 add_executable (RemindMe ${SOURCES})

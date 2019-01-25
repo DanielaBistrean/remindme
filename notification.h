@@ -11,14 +11,16 @@ namespace remindme
 	public:
 		~notification();
 
-		bool show(const unsigned &uTimeout);
+		bool show(const unsigned &uTimeout = 0);
+		void close();
 	private:
-		notification(const std::string &sTitle);
-		notification(const std::string &sTitle, const std::string &sBody);
+		notification(const std::string &sTitle, bool bAutoClose = false);
+		notification(const std::string &sTitle, const std::string &sBody, bool bAutoClose = false);
 		
 		std::string 		m_sTitle;
 		std::string 		m_sBody;
 		NotifyNotification* m_pNotification;
+		bool 				m_bAutoClose;
 
 		friend class notification_service;
 	};

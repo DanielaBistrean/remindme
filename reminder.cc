@@ -18,8 +18,8 @@ namespace remindme
 			const reminder *r = static_cast<const reminder*> (value.sival_ptr);
 			std::cout << r->getTitle() << ": time is up!\n";
 			
-			notification n = ns.createNotification("RemindMe", r->getTitle());
-			n.show(3000);
+			notification n = ns->createNotification("RemindMe", r->getTitle());
+			n.show();
 		}
 		catch (const std::exception &e)
 		{
